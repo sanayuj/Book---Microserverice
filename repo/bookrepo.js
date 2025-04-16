@@ -44,4 +44,20 @@ class BookRepository{
 
         }
         );
-}}
+}
+async deleteBookById(uuid){
+    const count=await this.bookModel.destory({
+        where:{
+            id:uuid
+        }
+    })
+    console.log('deleted row(s):'+count);
+    return count;
+}
+
+
+}
+
+module.exports={
+    BookRepository
+}
