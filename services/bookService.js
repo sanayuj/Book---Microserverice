@@ -1,6 +1,6 @@
 const uuid=require('uuid');
 
-const customResourceResponse=require("../utils");
+const customResourceResponse=require("../utils/constantMessage");
 
 class BookService{
     constructor (bookRepo){
@@ -19,5 +19,8 @@ class BookService{
             response. statusCode = customResourceResponse.reqValidationError.statusCode;
             return response;
         }
+        const book = await this.bookRepo.addBook(uuidV4, name, releaseDate, authorName)
+            if(!book) {
+            response.message = customResourceResponse.serverError.message;
     }
 }
